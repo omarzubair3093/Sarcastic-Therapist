@@ -2,7 +2,7 @@ services:
   - type: web
     name: sarcastic-therapist
     env: python
-    pythonVersion: "3.11.9" # Provide the full major.minor.patch version
+    pythonVersion: "3.11.0"  # or "3.10.12", "3.9.18"
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
     envVars:
