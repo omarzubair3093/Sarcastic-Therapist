@@ -1,21 +1,11 @@
-# Optimized requirements.txt - Removed unnecessary ML libraries
-flask==2.2.3
-werkzeug==2.2.3
-supabase==1.0.3
+flask==3.0.0
+werkzeug==3.0.1
+supabase==2.3.4
 python-dotenv==1.0.0
-requests==2.28.2
-torch==2.6.0
-torchaudio==2.6.0
-numpy==1.24.3
-openai==1.2.0
+requests==2.31.0
+numpy==1.26.4
+openai==1.51.0
 gunicorn==21.2.0
-boto3==1.34.0
-
-# Removed these heavy unnecessary dependencies:
-# huggingface_hub==0.28.1     # Not needed - using OpenAI API
-# transformers==4.49.0        # Not needed - using OpenAI API
-# soundfile==0.12.1          # Not needed - torchaudio handles this
-# safetensors==0.5.3         # Not needed - no model loading
-# pillow                     # Not needed - no image processing
-# tokenizers==0.21.0         # Not needed - using OpenAI API
-# elevenlabslib>=0.32.0      # You have direct API version
+boto3==1.34.144
+# torch==2.6.0  # Only if you need local ML
+# torchaudio==2.6.0  # Only if you need local ML
