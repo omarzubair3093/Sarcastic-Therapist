@@ -1,0 +1,1412 @@
+2025-05-02 22:37:08,274 - root - WARNING - Amazon Polly integration not available
+2025-05-02 22:37:08,357 - app - INFO - SUPABASE_URL present: True
+2025-05-02 22:37:08,357 - app - INFO - SUPABASE_KEY present: True
+2025-05-02 22:37:08,357 - app - INFO - OPENAI_API_KEY present: True
+2025-05-02 22:37:08,357 - app - INFO - DIA_API_KEY present: True
+2025-05-02 22:37:08,368 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-02 22:37:08,368 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-02 22:37:08,369 - werkzeug - INFO -  * Restarting with stat
+2025-05-02 22:37:09,668 - root - WARNING - Amazon Polly integration not available
+2025-05-02 22:37:09,715 - app - INFO - SUPABASE_URL present: True
+2025-05-02 22:37:09,715 - app - INFO - SUPABASE_KEY present: True
+2025-05-02 22:37:09,715 - app - INFO - OPENAI_API_KEY present: True
+2025-05-02 22:37:09,715 - app - INFO - DIA_API_KEY present: True
+2025-05-02 22:37:09,721 - werkzeug - WARNING -  * Debugger is active!
+2025-05-02 22:37:09,735 - werkzeug - INFO -  * Debugger PIN: 100-380-534
+2025-05-02 22:37:15,179 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:15] "GET / HTTP/1.1" 200 -
+2025-05-02 22:37:17,678 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:17] "GET /api/history HTTP/1.1" 200 -
+2025-05-02 22:37:18,727 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-02 22:37:24,834 - app - INFO - Received message: 'Yo'
+2025-05-02 22:37:24,836 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-02 22:37:24,836 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-02 22:37:24,836 - app - INFO - Set sarcasm level to 5
+2025-05-02 22:37:24,837 - openai_therapist - INFO - Generating response for: 'Yo'
+2025-05-02 22:37:25,527 - openai_therapist - ERROR - Error from OpenAI: 401, {
+    "error": {
+        "message": "Your authentication token is not from a valid issuer.",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "invalid_issuer"
+    }
+}
+
+2025-05-02 22:37:25,530 - app - INFO - Generated response: 'Sorry, I'm having trouble connecting to my digital therapist brain. Try again?'
+2025-05-02 22:37:25,531 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-02 22:37:25,531 - app - WARNING - No audio service available, generating silent audio
+2025-05-02 22:37:25,531 - dia_tts - WARNING - Generating silent audio for: 'Sorry, I'm having trouble connecting to my digital therapist brain. Try again?'
+2025-05-02 22:37:25,645 - app - ERROR - Error with primary audio service: Expected 2D Tensor, got 3D.
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/app.py", line 237, in generate_audio_for_response
+    generate_silent_audio(text, output_path)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 255, in generate_silent_audio
+    torchaudio.save(
+    ~~~~~~~~~~~~~~~^
+        output_path,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        format='wav'
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/omarzubair/Library/Caches/pypoetry/virtualenvs/sarcastic-therapist-BamrNhyS-py3.13/lib/python3.13/site-packages/torchaudio/_backend/utils.py", line 313, in save
+    return backend.save(
+           ~~~~~~~~~~~~^
+        uri, src, sample_rate, channels_first, format, encoding, bits_per_sample, buffer_size, compression
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/omarzubair/Library/Caches/pypoetry/virtualenvs/sarcastic-therapist-BamrNhyS-py3.13/lib/python3.13/site-packages/torchaudio/_backend/soundfile.py", line 44, in save
+    soundfile_backend.save(
+    ~~~~~~~~~~~~~~~~~~~~~~^
+        uri, src, sample_rate, channels_first, format=format, encoding=encoding, bits_per_sample=bits_per_sample
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/omarzubair/Library/Caches/pypoetry/virtualenvs/sarcastic-therapist-BamrNhyS-py3.13/lib/python3.13/site-packages/torchaudio/_backend/soundfile_backend.py", line 427, in save
+    raise ValueError(f"Expected 2D Tensor, got {src.ndim}D.")
+ValueError: Expected 2D Tensor, got 3D.
+2025-05-02 22:37:25,662 - app - INFO - Falling back to alternative service
+2025-05-02 22:37:25,662 - app - INFO - Falling back to Dia
+2025-05-02 22:37:25,662 - dia_tts - INFO - generate_and_save called with text: 'Sorry, I'm having trouble connecting to my digital therapist brain. Try again?', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/67370c75b7ae4f3eb10aaeab5ae8522c.wav
+2025-05-02 22:37:25,718 - dia_tts - INFO - Using device: cpu
+2025-05-02 22:37:25,719 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-05-02 22:37:25,719 - dia_tts - INFO - Dia API key found in environment variables
+2025-05-02 22:37:25,720 - dia_tts - INFO - Generating audio for text: 'Sorry, I'm having trouble connecting to my digital therapist brain. Try again?', speaker: 0
+2025-05-02 22:37:26,952 - dia_tts - ERROR - Error from Dia API: 404, 
+2025-05-02 22:37:26,993 - dia_tts - INFO - Generated placeholder audio for: 'Sorry, I'm having trouble connecting to my digital therapist brain. Try again?', duration: 7.49s
+2025-05-02 22:37:27,048 - dia_tts - INFO - Saving audio to /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/67370c75b7ae4f3eb10aaeab5ae8522c.wav
+2025-05-02 22:37:27,067 - dia_tts - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/67370c75b7ae4f3eb10aaeab5ae8522c.wav, size: 359466 bytes
+2025-05-02 22:37:27,067 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/67370c75b7ae4f3eb10aaeab5ae8522c.wav, size: 359466 bytes
+2025-05-02 22:37:27,074 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:27] "POST /api/message HTTP/1.1" 200 -
+2025-05-02 22:37:27,134 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:27] "[35m[1mGET /static/audio/67370c75b7ae4f3eb10aaeab5ae8522c.wav HTTP/1.1[0m" 206 -
+2025-05-02 22:37:27,462 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-02 22:37:35,977 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True}
+2025-05-02 22:37:35,983 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 22:37:35] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-02 23:04:21,592 - root - WARNING - Amazon Polly integration not available
+2025-05-02 23:04:21,776 - app - INFO - SUPABASE_URL present: True
+2025-05-02 23:04:22,628 - app - INFO - SUPABASE_KEY present: True
+2025-05-02 23:04:22,628 - app - INFO - OPENAI_API_KEY present: True
+2025-05-02 23:04:22,628 - app - INFO - DIA_API_KEY present: True
+2025-05-02 23:04:22,663 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-02 23:04:23,599 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-02 23:04:23,604 - werkzeug - INFO -  * Restarting with stat
+2025-05-02 23:04:25,603 - root - WARNING - Amazon Polly integration not available
+2025-05-02 23:04:25,633 - app - INFO - SUPABASE_URL present: True
+2025-05-02 23:04:25,633 - app - INFO - SUPABASE_KEY present: True
+2025-05-02 23:04:25,634 - app - INFO - OPENAI_API_KEY present: True
+2025-05-02 23:04:25,634 - app - INFO - DIA_API_KEY present: True
+2025-05-02 23:04:25,643 - werkzeug - WARNING -  * Debugger is active!
+2025-05-02 23:04:25,660 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-02 23:04:29,787 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:29] "GET / HTTP/1.1" 200 -
+2025-05-02 23:04:30,696 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:30] "GET /api/history HTTP/1.1" 200 -
+2025-05-02 23:04:36,373 - app - INFO - Received message: 'Hey'
+2025-05-02 23:04:36,378 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-02 23:04:36,379 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-02 23:04:36,379 - app - INFO - Set sarcasm level to 5
+2025-05-02 23:04:36,379 - openai_therapist - INFO - Generating response for: 'Hey'
+2025-05-02 23:04:37,952 - openai_therapist - INFO - Generated response: 'Oh, hello there! I almost didn't recognize you without the usual banter about "whatever this is." What's on your mind today? Let's see if we can steer this conversation in a slightly more productive direction, shall we?'
+2025-05-02 23:04:37,953 - app - INFO - Generated response: 'Oh, hello there! I almost didn't recognize you without the usual banter about "whatever this is." What's on your mind today? Let's see if we can steer this conversation in a slightly more productive direction, shall we?'
+2025-05-02 23:04:37,955 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-02 23:04:37,955 - app - WARNING - No audio service available, generating silent audio
+2025-05-02 23:04:37,955 - dia_tts - WARNING - Generating silent audio for: 'Oh, hello there! I almost didn't recognize you without the usual banter about "whatever this is." What's on your mind today? Let's see if we can steer this conversation in a slightly more productive direction, shall we?'
+2025-05-02 23:04:38,205 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/4e71fcd8bd0f46d0be1a795c062f2ea5.wav
+2025-05-02 23:04:38,205 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/4e71fcd8bd0f46d0be1a795c062f2ea5.wav, size: 144044 bytes
+2025-05-02 23:04:38,206 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:38] "POST /api/message HTTP/1.1" 200 -
+2025-05-02 23:04:38,357 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:38] "[35m[1mGET /static/audio/4e71fcd8bd0f46d0be1a795c062f2ea5.wav HTTP/1.1[0m" 206 -
+2025-05-02 23:04:39,144 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-02 23:04:52,504 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True}
+2025-05-02 23:04:52,506 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:04:52] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-02 23:05:35,493 - app - INFO - Received message: 'I've to call my mom. Could you do it for me?'
+2025-05-02 23:05:35,510 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-02 23:05:35,512 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-02 23:05:35,512 - app - INFO - Set sarcasm level to 5
+2025-05-02 23:05:35,512 - openai_therapist - INFO - Generating response for: 'I've to call my mom. Could you do it for me?'
+2025-05-02 23:05:36,525 - openai_therapist - INFO - Generated response: 'As much as I love playing pretend, I think this is a task you might want to tackle yourself. Avoiding difficult conversations won't make them disappear, so why not give your mom a call and see how it goes? Remember, communication is key, even if it involves some uncomfortable moments.'
+2025-05-02 23:05:36,528 - app - INFO - Generated response: 'As much as I love playing pretend, I think this is a task you might want to tackle yourself. Avoiding difficult conversations won't make them disappear, so why not give your mom a call and see how it goes? Remember, communication is key, even if it involves some uncomfortable moments.'
+2025-05-02 23:05:36,530 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-02 23:05:36,530 - app - WARNING - No audio service available, generating silent audio
+2025-05-02 23:05:36,530 - dia_tts - WARNING - Generating silent audio for: 'As much as I love playing pretend, I think this is a task you might want to tackle yourself. Avoiding difficult conversations won't make them disappear, so why not give your mom a call and see how it goes? Remember, communication is key, even if it involves some uncomfortable moments.'
+2025-05-02 23:05:36,729 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/022888a8a2c648229a3f9a485384dcec.wav
+2025-05-02 23:05:36,730 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/022888a8a2c648229a3f9a485384dcec.wav, size: 144044 bytes
+2025-05-02 23:05:36,731 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:05:36] "POST /api/message HTTP/1.1" 200 -
+2025-05-02 23:05:36,742 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:05:36] "[35m[1mGET /static/audio/022888a8a2c648229a3f9a485384dcec.wav HTTP/1.1[0m" 206 -
+2025-05-02 23:08:40,938 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:08:40] "[35m[1mGET /static/audio/022888a8a2c648229a3f9a485384dcec.wav HTTP/1.1[0m" 206 -
+2025-05-02 23:08:59,070 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False}
+2025-05-02 23:08:59,073 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:08:59] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-02 23:09:11,190 - app - INFO - Received message: 'Yeah, sure. What's the point of having you then?'
+2025-05-02 23:09:11,192 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-02 23:09:11,192 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-02 23:09:11,192 - app - INFO - Set sarcasm level to 5
+2025-05-02 23:09:11,192 - openai_therapist - INFO - Generating response for: 'Yeah, sure. What's the point of having you then?'
+2025-05-02 23:09:13,313 - openai_therapist - INFO - Generated response: 'Ah, the classic "What's the point?" question. Well, my dear friend, the point of having me around is to nudge you in the right direction, not to do your dirty work for you. Think of me as your sarcastic little guardian angel, guiding you towards personal growth and all that jazz. So, go on and dial that number. Your mom will probably appreciate hearing from you, even if it's just to argue about the weather.'
+2025-05-02 23:09:13,318 - app - INFO - Generated response: 'Ah, the classic "What's the point?" question. Well, my dear friend, the point of having me around is to nudge you in the right direction, not to do your dirty work for you. Think of me as your sarcastic little guardian angel, guiding you towards personal growth and all that jazz. So, go on and dial that number. Your mom will probably appreciate hearing from you, even if it's just to argue about the weather.'
+2025-05-02 23:09:13,319 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-02 23:09:13,319 - app - WARNING - No audio service available, generating silent audio
+2025-05-02 23:09:13,320 - dia_tts - WARNING - Generating silent audio for: 'Ah, the classic "What's the point?" question. Well, my dear friend, the point of having me around is to nudge you in the right direction, not to do your dirty work for you. Think of me as your sarcastic little guardian angel, guiding you towards personal growth and all that jazz. So, go on and dial that number. Your mom will probably appreciate hearing from you, even if it's just to argue about the weather.'
+2025-05-02 23:09:13,418 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/336f3ddd34f545f696f03bb596405d13.wav
+2025-05-02 23:09:13,418 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/336f3ddd34f545f696f03bb596405d13.wav, size: 144044 bytes
+2025-05-02 23:09:13,420 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:09:13] "POST /api/message HTTP/1.1" 200 -
+2025-05-02 23:09:30,246 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":10}', 'use_dia': False}
+2025-05-02 23:09:30,248 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:09:30] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-02 23:09:45,311 - app - INFO - Received message: 'Damn you'
+2025-05-02 23:09:45,315 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-02 23:09:45,315 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-02 23:09:45,315 - app - INFO - Set sarcasm level to 5
+2025-05-02 23:09:45,316 - openai_therapist - INFO - Generating response for: 'Damn you'
+2025-05-02 23:09:46,657 - openai_therapist - INFO - Generated response: 'I'll take that as a sign of endearment. Remember, I'll always be here to sass you into self-improvement. Now go on, make that call before I start charging you extra for therapy sessions filled with my delightful sarcasm.'
+2025-05-02 23:09:46,661 - app - INFO - Generated response: 'I'll take that as a sign of endearment. Remember, I'll always be here to sass you into self-improvement. Now go on, make that call before I start charging you extra for therapy sessions filled with my delightful sarcasm.'
+2025-05-02 23:09:46,662 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-02 23:09:46,662 - app - WARNING - No audio service available, generating silent audio
+2025-05-02 23:09:46,662 - dia_tts - WARNING - Generating silent audio for: 'I'll take that as a sign of endearment. Remember, I'll always be here to sass you into self-improvement. Now go on, make that call before I start charging you extra for therapy sessions filled with my delightful sarcasm.'
+2025-05-02 23:09:46,717 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/b141e79de3c143a8820bf7c6f55998a9.wav
+2025-05-02 23:09:46,718 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/b141e79de3c143a8820bf7c6f55998a9.wav, size: 144044 bytes
+2025-05-02 23:09:46,719 - werkzeug - INFO - 127.0.0.1 - - [02/May/2025 23:09:46] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 00:42:17,043 - app - INFO - Received message: 'am I audible to you'
+2025-05-03 00:42:17,048 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 00:42:17,048 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 00:42:17,048 - app - INFO - Set sarcasm level to 5
+2025-05-03 00:42:17,049 - openai_therapist - INFO - Generating response for: 'am I audible to you'
+2025-05-03 00:42:18,604 - openai_therapist - INFO - Generated response: 'Loud and clear! I can hear every word you say, even the ones you mutter under your breath. So, what's on your mind today? Let's dive into the depths of your psyche with a touch of my signature sarcasm, shall we?'
+2025-05-03 00:42:19,047 - app - INFO - Generated response: 'Loud and clear! I can hear every word you say, even the ones you mutter under your breath. So, what's on your mind today? Let's dive into the depths of your psyche with a touch of my signature sarcasm, shall we?'
+2025-05-03 00:42:19,908 - app - INFO - Generating audio with: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 00:42:19,908 - app - WARNING - No audio service available, generating silent audio
+2025-05-03 00:42:19,908 - dia_tts - WARNING - Generating silent audio for: 'Loud and clear! I can hear every word you say, even the ones you mutter under your breath. So, what's on your mind today? Let's dive into the depths of your psyche with a touch of my signature sarcasm, shall we?'
+2025-05-03 00:42:20,190 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/cf129bd6b55d4ecda2e5d87697bc6272.wav
+2025-05-03 00:42:20,190 - app - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/cf129bd6b55d4ecda2e5d87697bc6272.wav, size: 144044 bytes
+2025-05-03 00:42:20,193 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:42:20] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 00:50:08,764 - werkzeug - INFO -  * Detected change in '/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/elevenlabs_tts.py', reloading
+2025-05-03 00:50:11,011 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 00:50:13,182 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:50:13,209 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:50:13,209 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:50:13,210 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:50:13,210 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:50:13,218 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 00:50:13,246 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 00:52:48,653 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:52:48,710 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:52:48,710 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:52:48,710 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:52:48,710 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:52:48,756 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 00:52:48,756 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 00:52:48,757 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 00:52:50,718 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:52:50,740 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:52:50,740 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:52:50,740 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:52:50,740 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:52:50,753 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 00:52:50,781 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 00:53:19,340 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:53:23,513 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 00:53:23,651 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:53:23,651 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:53:23,651 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:53:23,652 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:53:23,652 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 00:53:23,673 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 00:53:23,673 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 00:53:23,674 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 00:53:27,992 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:53:28,171 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 00:53:28,699 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:53:28,699 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:53:28,699 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:53:28,699 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:53:28,699 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 00:53:28,726 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 00:53:29,022 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 00:53:45,383 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:53:45] "GET / HTTP/1.1" 200 -
+2025-05-03 00:53:46,037 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:53:46] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 00:53:50,704 - app - INFO - Received message: 'hello what's happening'
+2025-05-03 00:53:50,705 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 00:53:50,705 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 00:53:50,705 - openai_therapist - INFO - Generating response for: 'hello what's happening'
+2025-05-03 00:53:51,959 - openai_therapist - INFO - Generated response: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?'
+2025-05-03 00:53:51,960 - app - INFO - Generated response: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?'
+2025-05-03 00:53:51,960 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 00:53:51,961 - app - WARNING - No audio service available, generating silent audio
+2025-05-03 00:53:51,961 - dia_tts - WARNING - Generating silent audio for: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?'
+2025-05-03 00:53:52,032 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/fbd7401da9bb4724b3103b7966010640.wav
+2025-05-03 00:53:52,032 - app - INFO - Falling back to Dia
+2025-05-03 00:53:52,033 - dia_tts - INFO - generate_and_save called with text: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/fbd7401da9bb4724b3103b7966010640.wav
+2025-05-03 00:53:52,033 - dia_tts - INFO - Using device: cpu
+2025-05-03 00:53:52,033 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-05-03 00:53:52,033 - dia_tts - INFO - Dia API key found in environment variables
+2025-05-03 00:53:52,033 - dia_tts - INFO - Generating audio for text: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?', speaker: 0
+2025-05-03 00:53:52,034 - dia_tts - ERROR - Error generating audio: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107eeba10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+        (self._dns_host, self.port), self.timeout, **extra_kw
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+        conn,
+    ...<5 lines>...
+        chunked=chunked,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+        self, "Failed to establish a new connection: %s" % e
+    )
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x107eeba10>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<8 lines>...
+        timeout=timeout,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+        method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107eeba10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 115, in generate
+    response = requests.post(
+        self.api_url,
+    ...<2 lines>...
+        stream=True
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x107eeba10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-05-03 00:53:52,067 - dia_tts - INFO - Generated placeholder audio for: 'Ah, the age-old question of "What's happening?" Well, in this moment, we're engaging in a riveting conversation filled with witty banter and psychological insights. I'm here, you're here, and we're on the brink of unraveling the mysteries of your mind. So, what shall we explore today? Your thoughts, your feelings, or perhaps your hidden desire to become a stand-up comedian?', duration: 36.10s
+2025-05-03 00:53:52,074 - dia_tts - INFO - Saving audio to /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/fbd7401da9bb4724b3103b7966010640.wav
+2025-05-03 00:53:52,102 - dia_tts - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/fbd7401da9bb4724b3103b7966010640.wav, size: 1732650 bytes
+2025-05-03 00:53:52,103 - app - INFO - Audio file created: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/fbd7401da9bb4724b3103b7966010640.wav, size=1732650
+2025-05-03 00:53:52,103 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:53:52] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 00:53:52,270 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:53:52] "[35m[1mGET /static/audio/fbd7401da9bb4724b3103b7966010640.wav HTTP/1.1[0m" 206 -
+2025-05-03 00:53:52,489 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:53:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 00:54:29,105 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False}
+2025-05-03 00:54:29,107 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:54:29] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-03 00:56:16,782 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:56:16,805 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 00:56:16,833 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:56:16,833 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:56:16,833 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:56:16,833 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:56:16,833 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 00:56:16,848 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 00:56:16,848 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 00:56:16,848 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 00:56:17,617 - root - WARNING - Amazon Polly integration not available
+2025-05-03 00:56:17,624 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 00:56:17,645 - app - INFO - SUPABASE_URL present: True
+2025-05-03 00:56:17,645 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 00:56:17,645 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 00:56:17,645 - app - INFO - DIA_API_KEY present: True
+2025-05-03 00:56:17,645 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 00:56:17,648 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 00:56:17,659 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 00:56:42,500 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:56:42] "GET / HTTP/1.1" 200 -
+2025-05-03 00:56:43,406 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:56:43] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 00:56:48,926 - app - INFO - Received message: 'now I'm not audible'
+2025-05-03 00:56:48,927 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 00:56:48,927 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 00:56:48,928 - openai_therapist - INFO - Generating response for: 'now I'm not audible'
+2025-05-03 00:56:50,503 - openai_therapist - INFO - Generated response: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.'
+2025-05-03 00:56:50,505 - app - INFO - Generated response: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.'
+2025-05-03 00:56:50,506 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 00:56:50,507 - app - WARNING - No audio service available, generating silent audio
+2025-05-03 00:56:50,507 - dia_tts - WARNING - Generating silent audio for: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.'
+2025-05-03 00:56:50,674 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav
+2025-05-03 00:56:50,674 - app - INFO - Falling back to Dia
+2025-05-03 00:56:50,674 - dia_tts - INFO - generate_and_save called with text: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav
+2025-05-03 00:56:50,675 - dia_tts - INFO - Using device: cpu
+2025-05-03 00:56:50,676 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-05-03 00:56:50,676 - dia_tts - INFO - Dia API key found in environment variables
+2025-05-03 00:56:50,676 - dia_tts - INFO - Generating audio for text: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.', speaker: 0
+2025-05-03 00:56:50,696 - dia_tts - ERROR - Error generating audio: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11716be00>: Failed to establish a new connection: [Errno 61] Connection refused'))
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+        (self._dns_host, self.port), self.timeout, **extra_kw
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+        conn,
+    ...<5 lines>...
+        chunked=chunked,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+        self, "Failed to establish a new connection: %s" % e
+    )
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x11716be00>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<8 lines>...
+        timeout=timeout,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+        method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11716be00>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 115, in generate
+    response = requests.post(
+        self.api_url,
+    ...<2 lines>...
+        stream=True
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11716be00>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-05-03 00:56:50,932 - dia_tts - INFO - Generated placeholder audio for: 'Oh, the classic disappearing act. Don't worry, I'm a therapist, not a mind reader. Well, technically, I'm supposed to read minds, but let's pretend I can't for now. If you're having technical difficulties, perhaps it's best to check your microphone settings or give it a good old-fashioned tap. Let me know when you're back in the land of the audible, and we can continue our delightful banter.', duration: 37.82s
+2025-05-03 00:56:50,985 - dia_tts - INFO - Saving audio to /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav
+2025-05-03 00:56:50,999 - dia_tts - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav, size: 1815596 bytes
+2025-05-03 00:56:50,999 - app - INFO - Audio file created: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav, size=1815596
+2025-05-03 00:56:51,000 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:56:51] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 00:56:51,067 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:56:51] "[35m[1mGET /static/audio/182a3bb3e49845fc9c9dd2e4a71c0a64.wav HTTP/1.1[0m" 206 -
+2025-05-03 00:56:51,568 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 00:56:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 01:22:06,154 - root - WARNING - Amazon Polly integration not available
+2025-05-03 01:22:07,790 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 01:22:07,855 - app - INFO - SUPABASE_URL present: True
+2025-05-03 01:22:07,855 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 01:22:07,855 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 01:22:07,855 - app - INFO - DIA_API_KEY present: True
+2025-05-03 01:22:07,855 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 01:22:07,880 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 01:22:07,880 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 01:22:07,881 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 01:22:09,083 - root - WARNING - Amazon Polly integration not available
+2025-05-03 01:22:09,095 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 01:22:09,114 - app - INFO - SUPABASE_URL present: True
+2025-05-03 01:22:09,114 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 01:22:09,115 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 01:22:09,115 - app - INFO - DIA_API_KEY present: True
+2025-05-03 01:22:09,115 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 01:22:09,119 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 01:22:09,144 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 01:22:19,661 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:22:19] "GET / HTTP/1.1" 200 -
+2025-05-03 01:22:21,557 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:22:21] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 01:31:15,930 - root - WARNING - Amazon Polly integration not available
+2025-05-03 01:31:15,973 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 01:31:16,014 - app - INFO - SUPABASE_URL present: True
+2025-05-03 01:31:16,014 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 01:31:16,014 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 01:31:16,014 - app - INFO - DIA_API_KEY present: True
+2025-05-03 01:31:16,014 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 01:31:16,024 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 01:31:16,024 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 01:31:16,025 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 01:31:16,820 - root - WARNING - Amazon Polly integration not available
+2025-05-03 01:31:16,833 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 01:31:16,856 - app - INFO - SUPABASE_URL present: True
+2025-05-03 01:31:16,856 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 01:31:16,856 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 01:31:16,856 - app - INFO - DIA_API_KEY present: True
+2025-05-03 01:31:16,856 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 01:31:16,860 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 01:31:16,869 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 01:31:24,465 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:31:24] "GET / HTTP/1.1" 200 -
+2025-05-03 01:31:25,222 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:31:25] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 01:31:31,845 - app - INFO - Received message: 'Sahi hai'
+2025-05-03 01:31:31,846 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 01:31:31,846 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 01:31:31,847 - openai_therapist - INFO - Generating response for: 'Sahi hai'
+2025-05-03 01:31:33,264 - openai_therapist - INFO - Generated response: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.'
+2025-05-03 01:31:33,266 - app - INFO - Generated response: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.'
+2025-05-03 01:31:33,267 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 01:31:33,267 - app - WARNING - No audio service available, generating silent audio
+2025-05-03 01:31:33,267 - dia_tts - WARNING - Generating silent audio for: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.'
+2025-05-03 01:31:33,290 - dia_tts - INFO - Silent audio saved to: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/517fd13e94bf4c028e6c4532114a3d50.wav
+2025-05-03 01:31:33,290 - app - INFO - Falling back to Dia
+2025-05-03 01:31:33,290 - dia_tts - INFO - generate_and_save called with text: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/517fd13e94bf4c028e6c4532114a3d50.wav
+2025-05-03 01:31:33,290 - dia_tts - INFO - Using device: cpu
+2025-05-03 01:31:33,290 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-05-03 01:31:33,290 - dia_tts - INFO - Dia API key found in environment variables
+2025-05-03 01:31:33,290 - dia_tts - INFO - Generating audio for text: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.', speaker: 0
+2025-05-03 01:31:33,293 - dia_tts - ERROR - Error generating audio: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1152f7b60>: Failed to establish a new connection: [Errno 61] Connection refused'))
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+        (self._dns_host, self.port), self.timeout, **extra_kw
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+        conn,
+    ...<5 lines>...
+        chunked=chunked,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.13.3/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.13.3/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.13.3/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.13.3/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.13.3/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+        self, "Failed to establish a new connection: %s" % e
+    )
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1152f7b60>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<8 lines>...
+        timeout=timeout,
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+        method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1152f7b60>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 115, in generate
+    response = requests.post(
+        self.api_url,
+    ...<2 lines>...
+        stream=True
+    )
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/.venv/lib/python3.13/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1152f7b60>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-05-03 01:31:33,363 - dia_tts - INFO - Generated placeholder audio for: 'Well, I'm glad you think so! Now, spill the beans. What's really going on in that intricate mind of yours? Let's unravel the mysteries together, with a sprinkle of sarcasm for good measure.', duration: 18.14s
+2025-05-03 01:31:33,366 - dia_tts - INFO - Saving audio to /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/517fd13e94bf4c028e6c4532114a3d50.wav
+2025-05-03 01:31:33,369 - dia_tts - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/517fd13e94bf4c028e6c4532114a3d50.wav, size: 870956 bytes
+2025-05-03 01:31:33,369 - app - INFO - Audio file created: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/517fd13e94bf4c028e6c4532114a3d50.wav, size=870956
+2025-05-03 01:31:33,370 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:31:33] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 01:31:33,408 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:31:33] "[35m[1mGET /static/audio/517fd13e94bf4c028e6c4532114a3d50.wav HTTP/1.1[0m" 206 -
+2025-05-03 01:31:33,711 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 01:31:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 02:01:14,133 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:01:14,157 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 02:01:14,182 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:01:14,183 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:01:14,183 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:01:14,183 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:01:14,183 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:01:14,197 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 02:01:14,197 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 02:01:14,198 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 02:01:14,974 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:01:14,982 - root - WARNING - ElevenLabs TTS integration not available
+2025-05-03 02:01:15,001 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:01:15,001 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:01:15,001 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:01:15,001 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:01:15,001 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:01:15,005 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 02:01:15,015 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 02:08:42,624 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:08:42,652 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:08:42,652 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:08:42,652 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:08:42,652 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:08:42,652 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:08:42,659 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 02:08:42,659 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 02:08:42,660 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 02:08:43,505 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:08:43,527 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:08:43,527 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:08:43,527 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:08:43,527 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:08:43,527 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:08:43,531 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 02:08:43,549 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 02:09:06,840 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:06] "GET / HTTP/1.1" 200 -
+2025-05-03 02:09:07,599 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:07] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 02:09:12,968 - app - INFO - Received message: 'it's raining in Bangalore'
+2025-05-03 02:09:12,970 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:09:12,970 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:09:12,970 - openai_therapist - INFO - Generating response for: 'it's raining in Bangalore'
+2025-05-03 02:09:14,521 - openai_therapist - INFO - Generated response: 'Ah, a classic conversation starter about the weather. How original! Well, rainy days can have a way of affecting our mood, but they also provide a perfect excuse to cozy up indoors and maybe tackle some of those pesky tasks you've been avoiding. Use this rainy day as an opportunity for some self-care or productivity. And hey, if all else fails, you can always indulge in some comfort food and Netflix binging.'
+2025-05-03 02:09:14,525 - app - INFO - Generated response: 'Ah, a classic conversation starter about the weather. How original! Well, rainy days can have a way of affecting our mood, but they also provide a perfect excuse to cozy up indoors and maybe tackle some of those pesky tasks you've been avoiding. Use this rainy day as an opportunity for some self-care or productivity. And hey, if all else fails, you can always indulge in some comfort food and Netflix binging.'
+2025-05-03 02:09:14,526 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:09:14,526 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:09:19,978 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:19] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:09:20,185 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:20] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:09:23,068 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:23] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:09:25,179 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:25] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:09:26,499 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:26] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:09:32,137 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False}
+2025-05-03 02:09:32,138 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:32] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-03 02:09:34,431 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:09:34] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:10:00,194 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:10:00] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:10:32,840 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False}
+2025-05-03 02:10:32,844 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:10:32] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-03 02:10:34,205 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:10:34] "[33mGET /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/3505cb21a2634d3a8918e3d7e412f3f8.wav HTTP/1.1[0m" 404 -
+2025-05-03 02:10:45,386 - app - INFO - Received message: 'Netflix that's the idea that you have come on'
+2025-05-03 02:10:45,388 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:10:45,388 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:10:45,388 - openai_therapist - INFO - Generating response for: 'Netflix that's the idea that you have come on'
+2025-05-03 02:10:46,500 - openai_therapist - INFO - Generated response: 'Ah, Netflix, the modern-day escape from reality. While binge-watching can be a fun way to unwind, it's essential to balance it with other activities that nurture your well-being. How about mixing in some productive tasks between episodes? Maybe call your mom during the intermission? Just a thought, feel free to take it or leave it.'
+2025-05-03 02:10:46,505 - app - INFO - Generated response: 'Ah, Netflix, the modern-day escape from reality. While binge-watching can be a fun way to unwind, it's essential to balance it with other activities that nurture your well-being. How about mixing in some productive tasks between episodes? Maybe call your mom during the intermission? Just a thought, feel free to take it or leave it.'
+2025-05-03 02:10:46,506 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:10:46,506 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:10:51,083 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:10:51] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:17:22,079 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:17:22,146 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:17:22,146 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:17:22,146 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:17:22,146 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:17:22,146 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:17:22,160 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 02:17:22,160 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 02:17:22,161 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 02:17:23,732 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:17:23,753 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:17:23,754 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:17:23,754 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:17:23,754 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:17:23,754 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:17:23,759 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 02:17:23,773 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 02:17:42,061 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:17:42] "GET / HTTP/1.1" 200 -
+2025-05-03 02:17:42,803 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:17:42] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 02:17:49,061 - app - INFO - Received message: 'yo yo what's happening'
+2025-05-03 02:17:49,063 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:17:49,063 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:17:49,063 - openai_therapist - INFO - Generating response for: 'yo yo what's happening'
+2025-05-03 02:17:50,072 - openai_therapist - INFO - Generated response: 'Ah, the casual "yo yo" greeting. I see we're keeping it cool and casual today. Well, since you asked, we're here discussing life, feelings, and all that good stuff. So, spill the beans. What's been on your mind lately, aside from perfecting your "yo yo" game?'
+2025-05-03 02:17:50,075 - app - INFO - Generated response: 'Ah, the casual "yo yo" greeting. I see we're keeping it cool and casual today. Well, since you asked, we're here discussing life, feelings, and all that good stuff. So, spill the beans. What's been on your mind lately, aside from perfecting your "yo yo" game?'
+2025-05-03 02:17:50,076 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:17:50,076 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:17:53,570 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:17:53] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:17:54,168 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:17:54] "[35m[1mGET /static/audio/1fa2752ca81e4b88a5430269b183a5a9.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:17:54,358 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:17:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 02:18:16,949 - app - INFO - Received message: 'it's my girlfriend's birthday I don't know what to get her'
+2025-05-03 02:18:16,951 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:18:16,951 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:18:16,951 - openai_therapist - INFO - Generating response for: 'it's my girlfriend's birthday I don't know what to get her'
+2025-05-03 02:18:18,263 - openai_therapist - INFO - Generated response: 'Ah, the classic dilemma of gift-giving. Have you considered the revolutionary idea of... asking her what she wants? Crazy, I know. Communication isn't just for therapy sessions; it works wonders in relationships too. But hey, if you want to go the traditional route, flowers and chocolate usually do the trick. Just don't forget the birthday card; those words of affection can really seal the deal.'
+2025-05-03 02:18:18,268 - app - INFO - Generated response: 'Ah, the classic dilemma of gift-giving. Have you considered the revolutionary idea of... asking her what she wants? Crazy, I know. Communication isn't just for therapy sessions; it works wonders in relationships too. But hey, if you want to go the traditional route, flowers and chocolate usually do the trick. Just don't forget the birthday card; those words of affection can really seal the deal.'
+2025-05-03 02:18:18,269 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:18:18,269 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:18:23,248 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:18:23] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:18:23,786 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:18:23] "[35m[1mGET /static/audio/c1fe05d71d4a47518c3f0166efcedd39.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:18:51,380 - app - INFO - Received message: 'a birthday in this economy what do you think'
+2025-05-03 02:18:51,381 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:18:51,381 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:18:51,381 - openai_therapist - INFO - Generating response for: 'a birthday in this economy what do you think'
+2025-05-03 02:18:52,751 - openai_therapist - INFO - Generated response: 'Ah, the age-old dilemma of celebrating birthdays in this ruthless economy. Well, here's a revolutionary idea - you could try a budget-friendly celebration! Who says you need a fancy dinner or extravagant gifts to mark another year around the sun? Get creative, make a homemade card, bake a cake (or buy one if baking's not your thing), and voila! You've got yourself a heartfelt and wallet-friendly birthday celebration. Remember, it's the thought that counts, not the price tag.'
+2025-05-03 02:18:52,755 - app - INFO - Generated response: 'Ah, the age-old dilemma of celebrating birthdays in this ruthless economy. Well, here's a revolutionary idea - you could try a budget-friendly celebration! Who says you need a fancy dinner or extravagant gifts to mark another year around the sun? Get creative, make a homemade card, bake a cake (or buy one if baking's not your thing), and voila! You've got yourself a heartfelt and wallet-friendly birthday celebration. Remember, it's the thought that counts, not the price tag.'
+2025-05-03 02:18:52,756 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:18:52,757 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:18:59,320 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:18:59] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:18:59,865 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:18:59] "[35m[1mGET /static/audio/71fc33527d1943439a406bc0b00ac029.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:19:40,077 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":10}', 'use_dia': True}
+2025-05-03 02:19:40,080 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:19:40] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-03 02:19:45,067 - app - INFO - Received message: 'who says price tag doesn't work'
+2025-05-03 02:19:45,068 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:19:45,068 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:19:45,068 - openai_therapist - INFO - Generating response for: 'who says price tag doesn't work'
+2025-05-03 02:19:46,164 - openai_therapist - INFO - Generated response: 'Ah, the age-old debate of whether you can put a price tag on personal growth and emotional well-being. While a catchy song lyric might suggest otherwise, the value of therapy goes beyond any material cost. Investing in yourself and your mental health is priceless, even if you can't slap a barcode on it. So, let's keep working on unraveling those thoughts and feelings, regardless of what the price tag says.'
+2025-05-03 02:19:46,166 - app - INFO - Generated response: 'Ah, the age-old debate of whether you can put a price tag on personal growth and emotional well-being. While a catchy song lyric might suggest otherwise, the value of therapy goes beyond any material cost. Investing in yourself and your mental health is priceless, even if you can't slap a barcode on it. So, let's keep working on unraveling those thoughts and feelings, regardless of what the price tag says.'
+2025-05-03 02:19:46,166 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:19:46,166 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:19:51,221 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:19:51] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:19:51,753 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:19:51] "[35m[1mGET /static/audio/3a66b2bb1a6045d38b44997a9069da99.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:20:24,961 - app - INFO - Received message: 'I was talking about the price tag for gifts you said price tag does not matter in thought matters but I think the price tag does matter'
+2025-05-03 02:20:24,962 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:20:24,962 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:20:24,962 - openai_therapist - INFO - Generating response for: 'I was talking about the price tag for gifts you said price tag does not matter in thought matters but I think the price tag does matter'
+2025-05-03 02:20:26,269 - openai_therapist - INFO - Generated response: 'Ah, the age-old debate of whether it's the thought that counts or the price tag that matters. It seems like you're caught up in the materialistic whirlpool, my friend. While the thought behind a gift is indeed important, let's not pretend that the price tag has zero significance. It's about finding a balance between thoughtful gestures and not breaking the bank. Remember, the value of a gift is not solely determined by its cost, but it's okay to acknowledge that the price tag can play a role in certain situations.'
+2025-05-03 02:20:26,272 - app - INFO - Generated response: 'Ah, the age-old debate of whether it's the thought that counts or the price tag that matters. It seems like you're caught up in the materialistic whirlpool, my friend. While the thought behind a gift is indeed important, let's not pretend that the price tag has zero significance. It's about finding a balance between thoughtful gestures and not breaking the bank. Remember, the value of a gift is not solely determined by its cost, but it's okay to acknowledge that the price tag can play a role in certain situations.'
+2025-05-03 02:20:26,273 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:20:26,273 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:20:32,642 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:20:32] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:20:33,185 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:20:33] "[35m[1mGET /static/audio/b099b92469594f07a8fcd58d6e563d8d.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:21:26,291 - app - INFO - Received message: 'tell me everything that you know about me so far'
+2025-05-03 02:21:26,294 - openai_therapist - INFO - OpenAI API key found, using model: gpt-3.5-turbo
+2025-05-03 02:21:26,294 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:21:26,294 - openai_therapist - INFO - Generating response for: 'tell me everything that you know about me so far'
+2025-05-03 02:21:27,838 - openai_therapist - INFO - Generated response: 'Ah, the thirst for self-discovery! Well, based on our riveting conversations, it seems you have a knack for seeking out sarcastic therapists who enjoy a good mental sparring session. You may have a tendency to avoid certain tasks or conversations, but hey, awareness is the first step, right? Remember, self-awareness combined with a dash of action can lead to some pretty fantastic personal growth. So, what's the next thrilling topic you'd like to explore?'
+2025-05-03 02:21:27,851 - app - INFO - Generated response: 'Ah, the thirst for self-discovery! Well, based on our riveting conversations, it seems you have a knack for seeking out sarcastic therapists who enjoy a good mental sparring session. You may have a tendency to avoid certain tasks or conversations, but hey, awareness is the first step, right? Remember, self-awareness combined with a dash of action can lead to some pretty fantastic personal growth. So, what's the next thrilling topic you'd like to explore?'
+2025-05-03 02:21:27,852 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:21:27,852 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:21:33,610 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:21:33] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:21:34,137 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:21:34] "[35m[1mGET /static/audio/3ba137eda4494d20ac9d14d6ec316444.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:25:25,983 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:25:26,017 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:25:26,017 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:25:26,017 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:25:26,017 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:25:26,017 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:25:26,028 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 02:25:26,028 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 02:25:26,029 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 02:25:26,828 - root - WARNING - Amazon Polly integration not available
+2025-05-03 02:25:26,848 - app - INFO - SUPABASE_URL present: True
+2025-05-03 02:25:26,848 - app - INFO - SUPABASE_KEY present: True
+2025-05-03 02:25:26,848 - app - INFO - OPENAI_API_KEY present: True
+2025-05-03 02:25:26,849 - app - INFO - DIA_API_KEY present: True
+2025-05-03 02:25:26,849 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-03 02:25:26,852 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 02:25:26,862 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-03 02:25:30,109 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:25:30] "GET / HTTP/1.1" 200 -
+2025-05-03 02:25:30,427 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:25:30] "GET /api/history HTTP/1.1" 200 -
+2025-05-03 02:25:37,701 - app - INFO - Received message: 'give me a deep inside about life that no one has ever shared before'
+2025-05-03 02:25:37,702 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-03 02:25:37,703 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:25:37,703 - openai_therapist - INFO - Generating response for: 'give me a deep inside about life that no one has ever shared before'
+2025-05-03 02:25:42,901 - openai_therapist - INFO - Generated response: 'Oh, asking for the secrets of the universe now, are we? Let me just pull out my ancient, mystical crystal ball—or, you know, decades of psychological theory. Here’s a little nugget that’s both deep and delightfully underappreciated: life doesn’t actually come with a manual, and most of us are just improvising. Shocking, I know.
+
+But seriously, one profound truth that doesn't get enough airtime is that much of our suffering comes from resisting what is already happening. It’s like being in a river and trying to swim against the current rather than turning around and floating downstream. Embrace change, let go of control where you can, and watch how life seems a bit less like a battle and more like a bizarre adventure. How’s that for deep?'
+2025-05-03 02:25:42,905 - app - INFO - Generated response: 'Oh, asking for the secrets of the universe now, are we? Let me just pull out my ancient, mystical crystal ball—or, you know, decades of psychological theory. Here’s a little nugget that’s both deep and delightfully underappreciated: life doesn’t actually come with a manual, and most of us are just improvising. Shocking, I know.
+
+But seriously, one profound truth that doesn't get enough airtime is that much of our suffering comes from resisting what is already happening. It’s like being in a river and trying to swim against the current rather than turning around and floating downstream. Embrace change, let go of control where you can, and watch how life seems a bit less like a battle and more like a bizarre adventure. How’s that for deep?'
+2025-05-03 02:25:42,906 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:25:42,906 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:25:52,984 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:25:52] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:25:53,514 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:25:53] "[35m[1mGET /static/audio/ebe4fa4ff3b54e7e9da75cfe1a07d562.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:25:53,593 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:25:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 02:26:38,355 - app - INFO - Received message: 'nothing original'
+2025-05-03 02:26:38,357 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-03 02:26:38,357 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:26:38,358 - openai_therapist - INFO - Generating response for: 'nothing original'
+2025-05-03 02:26:40,744 - openai_therapist - INFO - Generated response: 'Ah, the old 'nothing original' dilemma. It’s like staring into a fridge full of food but claiming there's nothing to eat. But hey, sometimes the best conversations start with nothing particular in mind. Let's just riff off the existential ennui and see where it takes us, shall we? Maybe we'll stumble upon something profound... or at the very least, amusing.'
+2025-05-03 02:26:40,748 - app - INFO - Generated response: 'Ah, the old 'nothing original' dilemma. It’s like staring into a fridge full of food but claiming there's nothing to eat. But hey, sometimes the best conversations start with nothing particular in mind. Let's just riff off the existential ennui and see where it takes us, shall we? Maybe we'll stumble upon something profound... or at the very least, amusing.'
+2025-05-03 02:26:40,749 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:26:40,749 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:26:45,512 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:26:45] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:26:46,051 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:26:46] "[35m[1mGET /static/audio/17e21cd0608745feb2f138a00f71a9ca.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:27:11,512 - app - INFO - Received message: 'definition of jobs right now'
+2025-05-03 02:27:11,514 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-03 02:27:11,514 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:27:11,514 - openai_therapist - INFO - Generating response for: 'definition of jobs right now'
+2025-05-03 02:27:14,745 - openai_therapist - INFO - Generated response: 'Ah, the elusive definition of "jobs" in our modern era. Well, if by "jobs" you mean that thing you do to avoid starving and to afford Wi-Fi to complain about said job on social media, then yes, we're on the same page! 
+
+Seriously though, jobs today often blend traditional work with new-age chaos, where roles are as fluid as the coffee everyone's sipping from their company-branded mugs. Whether it's pivoting to digital landscapes or mastering the art of Zoom meetings without accidentally muting yourself, the work world keeps us all on our toes. Remember, adaptability is key, so let's make sure your career agility is more like a cat, and less like a sloth.'
+2025-05-03 02:27:14,749 - app - INFO - Generated response: 'Ah, the elusive definition of "jobs" in our modern era. Well, if by "jobs" you mean that thing you do to avoid starving and to afford Wi-Fi to complain about said job on social media, then yes, we're on the same page! 
+
+Seriously though, jobs today often blend traditional work with new-age chaos, where roles are as fluid as the coffee everyone's sipping from their company-branded mugs. Whether it's pivoting to digital landscapes or mastering the art of Zoom meetings without accidentally muting yourself, the work world keeps us all on our toes. Remember, adaptability is key, so let's make sure your career agility is more like a cat, and less like a sloth.'
+2025-05-03 02:27:14,750 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:27:14,751 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:27:22,901 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:27:22] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:27:23,425 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:27:23] "[35m[1mGET /static/audio/49c51b861eee45e881df9d87b34cfa47.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:28:02,964 - app - INFO - Received message: 'Do you think I should switch jobs now?'
+2025-05-03 02:28:02,965 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-03 02:28:02,966 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:28:02,966 - openai_therapist - INFO - Generating response for: 'Do you think I should switch jobs now?'
+2025-05-03 02:28:06,632 - openai_therapist - INFO - Generated response: 'Well, isn't that the million-dollar question? Before making any rash decisions, let's play a little game called "What Are My Reasons?" Are you fleeing from a dragon of a boss, or are you just bored because your job doesn't let you show off your full potential? Make sure you're not just jumping from the frying pan into the fire. If you've thought it through and the grass really does seem greener, then maybe it's time to leap. But remember, it's not always greener because of better care; sometimes it's just over a septic tank. Choose wisely!'
+2025-05-03 02:28:06,635 - app - INFO - Generated response: 'Well, isn't that the million-dollar question? Before making any rash decisions, let's play a little game called "What Are My Reasons?" Are you fleeing from a dragon of a boss, or are you just bored because your job doesn't let you show off your full potential? Make sure you're not just jumping from the frying pan into the fire. If you've thought it through and the grass really does seem greener, then maybe it's time to leap. But remember, it's not always greener because of better care; sometimes it's just over a septic tank. Choose wisely!'
+2025-05-03 02:28:06,635 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:28:06,636 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:28:13,422 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:28:13] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:28:13,940 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:28:13] "[35m[1mGET /static/audio/57ad8101f2d3413fbfd289d1559059ae.wav HTTP/1.1[0m" 206 -
+2025-05-03 02:33:44,776 - app - INFO - Received message: 'and what other languages can you talk to me give me a demo'
+2025-05-03 02:33:44,778 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-03 02:33:44,779 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-03 02:33:44,779 - openai_therapist - INFO - Generating response for: 'and what other languages can you talk to me give me a demo'
+2025-05-03 02:33:46,610 - openai_therapist - INFO - Generated response: 'Well, while I'm pretty proficient in the universal language of sarcasm, I’m here primarily to cater to your English-speaking needs. Think of it as a limitation of my charming persona. But hey, on the bright side, it means we can focus more on those delightful inner conflicts of yours without any translation errors!'
+2025-05-03 02:33:46,613 - app - INFO - Generated response: 'Well, while I'm pretty proficient in the universal language of sarcasm, I’m here primarily to cater to your English-speaking needs. Think of it as a limitation of my charming persona. But hey, on the bright side, it means we can focus more on those delightful inner conflicts of yours without any translation errors!'
+2025-05-03 02:33:46,614 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-03 02:33:46,614 - app - INFO - Using ElevenLabs TTS
+2025-05-03 02:33:50,843 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:33:50] "POST /api/message HTTP/1.1" 200 -
+2025-05-03 02:33:51,379 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 02:33:51] "[35m[1mGET /static/audio/5f244465d78b4f23bf2072df6e6e60c1.wav HTTP/1.1[0m" 206 -
+2025-05-04 13:21:07,190 - app - INFO - Received message: 'Is it raining in Germany?'
+2025-05-04 13:21:07,768 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-04 13:21:07,924 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-04 13:21:07,925 - openai_therapist - INFO - Generating response for: 'Is it raining in Germany?'
+2025-05-04 13:21:11,442 - openai_therapist - INFO - Generated response: 'Ah, I see we're switching to meteorology now. While I'm flattered you think my talents extend to weather forecasting across continents, I'm actually here to help you sort out life's storms, not tell you whether to carry an umbrella in Berlin. But hey, a quick online check will give you the weather update you need and let us focus on the emotional climates instead. How's the weather in your world? Any personal storms brewing that you want to talk about?'
+2025-05-04 13:21:11,447 - app - INFO - Generated response: 'Ah, I see we're switching to meteorology now. While I'm flattered you think my talents extend to weather forecasting across continents, I'm actually here to help you sort out life's storms, not tell you whether to carry an umbrella in Berlin. But hey, a quick online check will give you the weather update you need and let us focus on the emotional climates instead. How's the weather in your world? Any personal storms brewing that you want to talk about?'
+2025-05-04 13:21:11,447 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-04 13:21:11,447 - app - INFO - Using ElevenLabs TTS
+2025-05-04 13:21:17,058 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:21:17] "POST /api/message HTTP/1.1" 200 -
+2025-05-04 13:21:17,787 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:21:17] "[35m[1mGET /static/audio/33b928a08e1e43a4bbe21720586ead90.wav HTTP/1.1[0m" 206 -
+2025-05-04 13:22:01,665 - app - INFO - Received message: 'I want to get married. Maybe not. I need consistent companionship'
+2025-05-04 13:22:01,667 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-04 13:22:01,667 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-04 13:22:01,667 - openai_therapist - INFO - Generating response for: 'I want to get married. Maybe not. I need consistent companionship'
+2025-05-04 13:22:04,793 - openai_therapist - INFO - Generated response: 'Ah, the classic marital ambivalence. On one hand, the allure of eternal companionship, on the other, the fear of eternal... well, companionship. It sounds like what you're really craving is consistency in your connections, which is perfectly valid. Marriage isn't the only path to achieve that, nor is it a magic solution for loneliness. Maybe start by exploring what kind of relationships make you feel fulfilled and secure. Who knows? You might find that consistent companionship in places you didn’t expect, without having to toss a ring into the equation.'
+2025-05-04 13:22:04,797 - app - INFO - Generated response: 'Ah, the classic marital ambivalence. On one hand, the allure of eternal companionship, on the other, the fear of eternal... well, companionship. It sounds like what you're really craving is consistency in your connections, which is perfectly valid. Marriage isn't the only path to achieve that, nor is it a magic solution for loneliness. Maybe start by exploring what kind of relationships make you feel fulfilled and secure. Who knows? You might find that consistent companionship in places you didn’t expect, without having to toss a ring into the equation.'
+2025-05-04 13:22:04,800 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-04 13:22:04,800 - app - INFO - Using ElevenLabs TTS
+2025-05-04 13:22:13,865 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:22:13] "POST /api/message HTTP/1.1" 200 -
+2025-05-04 13:22:14,515 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:22:14] "[35m[1mGET /static/audio/dfadbbc2a6844229a18d031cf15906b0.wav HTTP/1.1[0m" 206 -
+2025-05-04 13:23:41,992 - app - INFO - Received message: 'Makes sense. In India, finding consistent companionship isn't easy. Your partner could be from a different religion. Its unacceptable here'
+2025-05-04 13:23:41,995 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-04 13:23:41,995 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-04 13:23:41,995 - openai_therapist - INFO - Generating response for: 'Makes sense. In India, finding consistent companionship isn't easy. Your partner could be from a different religion. Its unacceptable here'
+2025-05-04 13:23:48,928 - openai_therapist - INFO - Generated response: 'Ah, navigating the treacherous waters of love in the context of cultural and religious differences—truly the stuff of Bollywood epics. But seriously, it’s a valid concern. It's like choosing between love and tradition, and who doesn't love a good internal conflict, right?
+
+Here's a thought: while it might make the plot of your life a bit more complicated, differing backgrounds can also enrich a relationship. You know, add a little spice to the curry. It’s all about communication, respect, and a whole lot of compromise. So maybe instead of seeing these differences as a barrier, try viewing them as a bridge to something potentially wonderful. Who knows, you might just end up creating your own new tradition—now wouldn’t that be something?'
+2025-05-04 13:23:48,935 - app - INFO - Generated response: 'Ah, navigating the treacherous waters of love in the context of cultural and religious differences—truly the stuff of Bollywood epics. But seriously, it’s a valid concern. It's like choosing between love and tradition, and who doesn't love a good internal conflict, right?
+
+Here's a thought: while it might make the plot of your life a bit more complicated, differing backgrounds can also enrich a relationship. You know, add a little spice to the curry. It’s all about communication, respect, and a whole lot of compromise. So maybe instead of seeing these differences as a barrier, try viewing them as a bridge to something potentially wonderful. Who knows, you might just end up creating your own new tradition—now wouldn’t that be something?'
+2025-05-04 13:23:48,935 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-04 13:23:48,936 - app - INFO - Using ElevenLabs TTS
+2025-05-04 13:23:57,505 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:23:57] "POST /api/message HTTP/1.1" 200 -
+2025-05-04 13:23:58,521 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 13:23:58] "[35m[1mGET /static/audio/2945a784dc3e4e50a966f22727be5246.wav HTTP/1.1[0m" 206 -
+2025-05-04 20:27:01,435 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 20:27:01] "[35m[1mGET /static/audio/2945a784dc3e4e50a966f22727be5246.wav HTTP/1.1[0m" 206 -
+2025-05-05 18:49:27,083 - app - INFO - Received message: 'Monday Blues'
+2025-05-05 18:49:27,090 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-05 18:49:27,090 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-05 18:49:27,090 - openai_therapist - INFO - Generating response for: 'Monday Blues'
+2025-05-05 18:49:31,098 - openai_therapist - INFO - Generated response: 'Ah, the infamous Monday Blues, nature's way of reminding you that you have a job and responsibilities. How dreadful! But here's a thought: instead of dreading Mondays, why not treat them like a mini-New Year’s Day? A fresh start, a clean slate every week. Set some small, achievable goals to give yourself a little something to look forward to. Who knows, maybe you'll start seeing Mondays as less of a blues day and more of a "new opportunities" day. Or not, but hey, at least it was worth a shot!'
+2025-05-05 18:49:31,101 - app - INFO - Generated response: 'Ah, the infamous Monday Blues, nature's way of reminding you that you have a job and responsibilities. How dreadful! But here's a thought: instead of dreading Mondays, why not treat them like a mini-New Year’s Day? A fresh start, a clean slate every week. Set some small, achievable goals to give yourself a little something to look forward to. Who knows, maybe you'll start seeing Mondays as less of a blues day and more of a "new opportunities" day. Or not, but hey, at least it was worth a shot!'
+2025-05-05 18:49:31,102 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-05 18:49:31,102 - app - INFO - Using ElevenLabs TTS
+2025-05-05 18:49:37,376 - werkzeug - INFO - 127.0.0.1 - - [05/May/2025 18:49:37] "POST /api/message HTTP/1.1" 200 -
+2025-05-05 18:49:37,932 - werkzeug - INFO - 127.0.0.1 - - [05/May/2025 18:49:37] "[35m[1mGET /static/audio/78503359d1af4a79a83493cb2ab0426c.wav HTTP/1.1[0m" 206 -
+2025-05-06 23:42:13,071 - werkzeug - INFO -  * Detected change in '/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/app.py', reloading
+2025-05-06 23:42:15,344 - werkzeug - INFO -  * Restarting with stat
+2025-05-06 23:42:16,159 - app - INFO - SUPABASE_URL present: True
+2025-05-06 23:42:16,159 - app - INFO - SUPABASE_KEY present: True
+2025-05-06 23:42:16,159 - app - INFO - OPENAI_API_KEY present: True
+2025-05-06 23:42:16,159 - app - INFO - DIA_API_KEY present: True
+2025-05-06 23:42:16,159 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-06 23:42:17,090 - root - WARNING - Amazon Polly integration not available
+2025-05-06 23:42:17,111 - app - INFO - SUPABASE_URL present: True
+2025-05-06 23:42:17,111 - app - INFO - SUPABASE_KEY present: True
+2025-05-06 23:42:17,111 - app - INFO - OPENAI_API_KEY present: True
+2025-05-06 23:42:17,111 - app - INFO - DIA_API_KEY present: True
+2025-05-06 23:42:17,111 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-05-06 23:42:17,118 - werkzeug - WARNING -  * Debugger is active!
+2025-05-06 23:42:17,131 - werkzeug - INFO -  * Debugger PIN: 114-948-469
+2025-05-06 23:42:36,495 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:42:36] "GET / HTTP/1.1" 200 -
+2025-05-06 23:42:37,979 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:42:37] "GET /api/history HTTP/1.1" 200 -
+2025-05-06 23:43:10,202 - app - INFO - Received message: 'Where did we leave it the last time?'
+2025-05-06 23:43:10,203 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-06 23:43:10,204 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-06 23:43:10,204 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-05-06 23:43:10,204 - openai_therapist - INFO - Generating response for: 'Where did we leave it the last time?'
+2025-05-06 23:43:15,046 - openai_therapist - INFO - Generated response: 'Ah, yes, last time we were diving into the thrilling world of why you might be avoiding calling your mom. Quite the cliffhanger, wasn't it? Let’s pick up right there. Have you managed to make that call, or are we still at square one, pondering the existential crisis of telephone anxiety?'
+2025-05-06 23:43:15,050 - app - INFO - Generated response: 'Ah, yes, last time we were diving into the thrilling world of why you might be avoiding calling your mom. Quite the cliffhanger, wasn't it? Let’s pick up right there. Have you managed to make that call, or are we still at square one, pondering the existential crisis of telephone anxiety?'
+2025-05-06 23:43:15,051 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-06 23:43:15,051 - app - INFO - Using ElevenLabs TTS
+2025-05-06 23:43:18,395 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:43:18] "POST /api/message HTTP/1.1" 200 -
+2025-05-06 23:43:18,933 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:43:18] "[35m[1mGET /static/audio/be59ff66a68747e087e8dc05e8301aff.wav HTTP/1.1[0m" 206 -
+2025-05-06 23:43:19,138 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:43:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-06 23:43:48,409 - app - INFO - Received message: 'Yeah, I spoke. Boring'
+2025-05-06 23:43:48,410 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-06 23:43:48,410 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-06 23:43:48,410 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-05-06 23:43:48,411 - openai_therapist - INFO - Generating response for: 'Yeah, I spoke. Boring'
+2025-05-06 23:43:52,935 - openai_therapist - INFO - Generated response: 'Ah, the grand anticlimax of adult responsibilities—talking to your mom and finding it as thrilling as watching paint dry. But here's a thought: sometimes the mundane conversations are the ones that keep the relationship boat afloat. Maybe next time, spice it up with some existential questions or a surprise topic. Or you know, just bask in the glory of the routine check-in. Keeps things predictably safe, doesn't it?'
+2025-05-06 23:43:52,939 - app - INFO - Generated response: 'Ah, the grand anticlimax of adult responsibilities—talking to your mom and finding it as thrilling as watching paint dry. But here's a thought: sometimes the mundane conversations are the ones that keep the relationship boat afloat. Maybe next time, spice it up with some existential questions or a surprise topic. Or you know, just bask in the glory of the routine check-in. Keeps things predictably safe, doesn't it?'
+2025-05-06 23:43:52,939 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-06 23:43:52,940 - app - INFO - Using ElevenLabs TTS
+2025-05-06 23:43:58,281 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:43:58] "POST /api/message HTTP/1.1" 200 -
+2025-05-06 23:43:58,808 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:43:58] "[35m[1mGET /static/audio/5de45c92c75e446f97916a24d552f227.wav HTTP/1.1[0m" 206 -
+2025-05-06 23:44:31,317 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":10}', 'use_dia': True}
+2025-05-06 23:44:31,319 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:44:31] "POST /api/preferences HTTP/1.1" 200 -
+2025-05-06 23:44:45,817 - app - INFO - Received message: 'What else could I do?'
+2025-05-06 23:44:45,818 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-05-06 23:44:45,818 - openai_therapist - INFO - Sarcasm level set to 5
+2025-05-06 23:44:45,818 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-05-06 23:44:45,818 - openai_therapist - INFO - Generating response for: 'What else could I do?'
+2025-05-06 23:44:50,613 - openai_therapist - INFO - Generated response: 'Well, aren't we in a philosophical mood today! Let's see, apart from calling your mom, you could engage in a multitude of productive activities. How about reflecting on the reasons behind your reluctance to make the call? A little introspection never hurt anyone – except, perhaps, for the occasional bruised ego. Could it be avoidance, fear of confrontation, or just good old procrastination? Take a moment to explore those feelings; it's cheaper than Netflix and you might actually learn something about yourself.'
+2025-05-06 23:44:50,619 - app - INFO - Generated response: 'Well, aren't we in a philosophical mood today! Let's see, apart from calling your mom, you could engage in a multitude of productive activities. How about reflecting on the reasons behind your reluctance to make the call? A little introspection never hurt anyone – except, perhaps, for the occasional bruised ego. Could it be avoidance, fear of confrontation, or just good old procrastination? Take a moment to explore those feelings; it's cheaper than Netflix and you might actually learn something about yourself.'
+2025-05-06 23:44:50,620 - app - INFO - Generating audio: use_dia=False, voice=Rishi (en-IN), speech_rate=1.0
+2025-05-06 23:44:50,620 - app - INFO - Using ElevenLabs TTS
+2025-05-06 23:44:56,645 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:44:56] "POST /api/message HTTP/1.1" 200 -
+2025-05-06 23:44:57,172 - werkzeug - INFO - 127.0.0.1 - - [06/May/2025 23:44:57] "[35m[1mGET /static/audio/cbd62996b8c34cdba4cb6607a75fc272.wav HTTP/1.1[0m" 206 -
+2025-06-04 16:39:13,544 - app - INFO - SUPABASE_URL present: True
+2025-06-04 16:39:13,544 - app - INFO - SUPABASE_KEY present: True
+2025-06-04 16:39:13,544 - app - INFO - OPENAI_API_KEY present: True
+2025-06-04 16:39:13,544 - app - INFO - DIA_API_KEY present: True
+2025-06-04 16:39:13,544 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-06-04 16:39:13,624 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-04 16:39:13,624 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-04 16:39:13,625 - werkzeug - INFO -  * Restarting with stat
+2025-06-04 16:39:14,475 - app - INFO - SUPABASE_URL present: True
+2025-06-04 16:39:14,476 - app - INFO - SUPABASE_KEY present: True
+2025-06-04 16:39:14,476 - app - INFO - OPENAI_API_KEY present: True
+2025-06-04 16:39:14,476 - app - INFO - DIA_API_KEY present: True
+2025-06-04 16:39:14,476 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-06-04 16:39:14,479 - werkzeug - WARNING -  * Debugger is active!
+2025-06-04 16:39:14,494 - werkzeug - INFO -  * Debugger PIN: 100-380-534
+2025-06-04 16:39:17,802 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:17] "GET / HTTP/1.1" 200 -
+2025-06-04 16:39:18,943 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:18] "GET /api/history HTTP/1.1" 200 -
+2025-06-04 16:39:19,134 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-04 16:39:36,565 - app - INFO - Received message: 'RCB won IPL after 18 years'
+2025-06-04 16:39:36,566 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-06-04 16:39:36,566 - openai_therapist - INFO - Sarcasm level set to 5
+2025-06-04 16:39:36,566 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-06-04 16:39:36,566 - openai_therapist - INFO - Generating response for: 'RCB won IPL after 18 years'
+2025-06-04 16:39:40,401 - openai_therapist - INFO - Generated response: 'Ah, the sweet taste of victory... after nearly two decades. It's almost like they were testing the limits of their fans' patience and loyalty, wasn't it? Psychological endurance 101. But hey, it’s a great case study in perseverance, isn’t it? Hang in there long enough, and you might just see success—or maybe just a change because the universe gets bored. Either way, for the fans, it’s a lesson in emotional resilience. Celebrate the win, but maybe, just maybe, don’t wait another 18 years for the next celebration, huh?'
+2025-06-04 16:39:40,404 - app - INFO - Generated response: 'Ah, the sweet taste of victory... after nearly two decades. It's almost like they were testing the limits of their fans' patience and loyalty, wasn't it? Psychological endurance 101. But hey, it’s a great case study in perseverance, isn’t it? Hang in there long enough, and you might just see success—or maybe just a change because the universe gets bored. Either way, for the fans, it’s a lesson in emotional resilience. Celebrate the win, but maybe, just maybe, don’t wait another 18 years for the next celebration, huh?'
+2025-06-04 16:39:40,405 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-06-04 16:39:40,405 - app - INFO - Using ElevenLabs TTS
+2025-06-04 16:39:47,549 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:47] "POST /api/message HTTP/1.1" 200 -
+2025-06-04 16:39:48,091 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:48] "[35m[1mGET /static/audio/e7b8411abb1b4a9187898e6a3a99c735.wav HTTP/1.1[0m" 206 -
+2025-06-04 16:39:48,205 - werkzeug - INFO - 127.0.0.1 - - [04/Jun/2025 16:39:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-18 19:25:12,039 - app - INFO - SUPABASE_URL present: True
+2025-06-18 19:25:12,040 - app - INFO - SUPABASE_KEY present: True
+2025-06-18 19:25:12,040 - app - INFO - OPENAI_API_KEY present: True
+2025-06-18 19:25:12,040 - app - INFO - DIA_API_KEY present: True
+2025-06-18 19:25:12,040 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-06-18 19:25:12,100 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 19:25:12,100 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 19:25:12,101 - werkzeug - INFO -  * Restarting with stat
+2025-06-18 19:25:13,130 - app - INFO - SUPABASE_URL present: True
+2025-06-18 19:25:13,130 - app - INFO - SUPABASE_KEY present: True
+2025-06-18 19:25:13,130 - app - INFO - OPENAI_API_KEY present: True
+2025-06-18 19:25:13,130 - app - INFO - DIA_API_KEY present: True
+2025-06-18 19:25:13,130 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-06-18 19:25:13,134 - werkzeug - WARNING -  * Debugger is active!
+2025-06-18 19:25:13,151 - werkzeug - INFO -  * Debugger PIN: 100-380-534
+2025-06-18 19:25:15,749 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:25:15] "GET / HTTP/1.1" 200 -
+2025-06-18 19:25:16,778 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:25:16] "GET /api/history HTTP/1.1" 200 -
+2025-06-18 19:25:16,827 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:25:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-18 19:25:48,818 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True}
+2025-06-18 19:25:48,821 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:25:48] "POST /api/preferences HTTP/1.1" 200 -
+2025-06-18 19:25:57,071 - app - INFO - Received message: 'What's happening in the world?'
+2025-06-18 19:25:57,072 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-06-18 19:25:57,072 - openai_therapist - INFO - Sarcasm level set to 5
+2025-06-18 19:25:57,072 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-06-18 19:25:57,072 - openai_therapist - INFO - Generating response for: 'What's happening in the world?'
+2025-06-18 19:26:01,573 - openai_therapist - INFO - Generated response: 'Oh, just a casual mix of global pandemics, economic roller coasters, and the occasional existential crisis about artificial intelligence taking over the world. But really, who’s keeping track? More importantly, how are you processing all this delightful chaos? Staying grounded in a whirlwind of news can be about as easy as meditation in a rock concert. Remember, focusing on what you can control, like your responses and actions, might just keep you from writing your own dystopian novel.'
+2025-06-18 19:26:01,575 - app - INFO - Generated response: 'Oh, just a casual mix of global pandemics, economic roller coasters, and the occasional existential crisis about artificial intelligence taking over the world. But really, who’s keeping track? More importantly, how are you processing all this delightful chaos? Staying grounded in a whirlwind of news can be about as easy as meditation in a rock concert. Remember, focusing on what you can control, like your responses and actions, might just keep you from writing your own dystopian novel.'
+2025-06-18 19:26:01,575 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-06-18 19:26:01,575 - app - INFO - Using ElevenLabs TTS
+2025-06-18 19:26:07,883 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:26:07] "POST /api/message HTTP/1.1" 200 -
+2025-06-18 19:26:08,422 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:26:08] "[35m[1mGET /static/audio/77b44d1da2184e029e0af175aee81f06.wav HTTP/1.1[0m" 206 -
+2025-06-18 19:26:08,581 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:26:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-18 19:26:20,351 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:26:20] "GET / HTTP/1.1" 200 -
+2025-06-18 19:26:20,922 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2025 19:26:20] "GET /api/history HTTP/1.1" 200 -
+2025-07-19 21:22:55,194 - app - INFO - SUPABASE_URL present: True
+2025-07-19 21:22:55,195 - app - INFO - SUPABASE_KEY present: True
+2025-07-19 21:22:55,195 - app - INFO - OPENAI_API_KEY present: True
+2025-07-19 21:22:55,195 - app - INFO - DIA_API_KEY present: True
+2025-07-19 21:22:55,195 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-07-19 21:22:55,213 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-19 21:22:55,213 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-19 21:22:55,213 - werkzeug - INFO -  * Restarting with stat
+2025-07-19 21:22:56,309 - app - INFO - SUPABASE_URL present: True
+2025-07-19 21:22:56,309 - app - INFO - SUPABASE_KEY present: True
+2025-07-19 21:22:56,309 - app - INFO - OPENAI_API_KEY present: True
+2025-07-19 21:22:56,309 - app - INFO - DIA_API_KEY present: True
+2025-07-19 21:22:56,309 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-07-19 21:22:56,312 - werkzeug - WARNING -  * Debugger is active!
+2025-07-19 21:22:56,324 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-07-19 21:23:01,760 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:01] "GET / HTTP/1.1" 200 -
+2025-07-19 21:23:05,579 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:05] "GET /api/history HTTP/1.1" 200 -
+2025-07-19 21:23:10,419 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True}
+2025-07-19 21:23:10,420 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:10] "POST /api/preferences HTTP/1.1" 200 -
+2025-07-19 21:23:16,566 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":10}', 'use_dia': True}
+2025-07-19 21:23:16,567 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:16] "POST /api/preferences HTTP/1.1" 200 -
+2025-07-19 21:23:22,294 - app - INFO - Received message: 'my friend has come home After 5000 years abuse him'
+2025-07-19 21:23:22,294 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-07-19 21:23:22,295 - openai_therapist - INFO - Sarcasm level set to 5
+2025-07-19 21:23:22,295 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-07-19 21:23:22,295 - openai_therapist - INFO - Generating response for: 'my friend has come home After 5000 years abuse him'
+2025-07-19 21:23:26,830 - openai_therapist - INFO - Generated response: 'Well, I’m fairly certain your friend hasn't been away for 5,000 years unless they’ve discovered the secret to immortal life and decided to spring it on you casually. But hey, let's address the real issue here: abusing someone, no matter the reason or how long they've been gone, is never the right approach. What a novel idea, right?
+
+Assuming you're expressing extreme frustration and looking for a way to deal with your friend's return, maybe consider talking it out instead? Communication, as bland as it sounds, actually does wonders compared to, you know, emotional or verbal abuse. You might find out why they were gone so long, and you both could potentially move forward without resorting to the drama of a daytime TV show. How about giving that a try?'
+2025-07-19 21:23:26,834 - app - INFO - Generated response: 'Well, I’m fairly certain your friend hasn't been away for 5,000 years unless they’ve discovered the secret to immortal life and decided to spring it on you casually. But hey, let's address the real issue here: abusing someone, no matter the reason or how long they've been gone, is never the right approach. What a novel idea, right?
+
+Assuming you're expressing extreme frustration and looking for a way to deal with your friend's return, maybe consider talking it out instead? Communication, as bland as it sounds, actually does wonders compared to, you know, emotional or verbal abuse. You might find out why they were gone so long, and you both could potentially move forward without resorting to the drama of a daytime TV show. How about giving that a try?'
+2025-07-19 21:23:26,835 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-07-19 21:23:26,835 - app - INFO - Using ElevenLabs TTS
+2025-07-19 21:23:36,990 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:36] "POST /api/message HTTP/1.1" 200 -
+2025-07-19 21:23:38,194 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:38] "[35m[1mGET /static/audio/9a70f17640d64da09a4a25c83f56ebeb.wav HTTP/1.1[0m" 206 -
+2025-07-19 21:23:38,847 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:23:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-19 21:24:21,764 - app - INFO - Received message: 'You are dumb'
+2025-07-19 21:24:21,766 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-07-19 21:24:21,766 - openai_therapist - INFO - Sarcasm level set to 5
+2025-07-19 21:24:21,766 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-07-19 21:24:21,766 - openai_therapist - INFO - Generating response for: 'You are dumb'
+2025-07-19 21:24:24,664 - openai_therapist - INFO - Generated response: 'Oh, starting with the charm offensive, are we? If we're diving right into the world of ad hominem attacks, I must be in for a real treat today. But let's put that sparkling wit of yours to use. Tell me, what's really bothering you? Because, let's be honest, you didn’t come here just to test my self-esteem, which, by the way, is doing just fine.'
+2025-07-19 21:24:24,667 - app - INFO - Generated response: 'Oh, starting with the charm offensive, are we? If we're diving right into the world of ad hominem attacks, I must be in for a real treat today. But let's put that sparkling wit of yours to use. Tell me, what's really bothering you? Because, let's be honest, you didn’t come here just to test my self-esteem, which, by the way, is doing just fine.'
+2025-07-19 21:24:24,667 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-07-19 21:24:24,667 - app - INFO - Using ElevenLabs TTS
+2025-07-19 21:24:28,994 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:24:28] "POST /api/message HTTP/1.1" 200 -
+2025-07-19 21:24:29,513 - werkzeug - INFO - 127.0.0.1 - - [19/Jul/2025 21:24:29] "[35m[1mGET /static/audio/8942913ed14240b19f9fdcc018f3c1bf.wav HTTP/1.1[0m" 206 -
+2025-08-05 12:22:01,462 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:22:01,463 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:22:01,463 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:22:01,463 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:22:01,463 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:22:01,482 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-05 12:22:01,482 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-05 12:22:01,483 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 12:22:02,358 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:22:02,358 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:22:02,358 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:22:02,358 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:22:02,358 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:22:02,360 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 12:22:02,374 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 12:22:14,032 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:22:14] "GET / HTTP/1.1" 200 -
+2025-08-05 12:22:15,570 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:22:15] "GET /api/history HTTP/1.1" 200 -
+2025-08-05 12:22:15,613 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:22:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-05 12:22:24,504 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True}
+2025-08-05 12:22:24,505 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:22:24] "POST /api/preferences HTTP/1.1" 200 -
+2025-08-05 12:22:43,782 - app - INFO - Received message: 'Help me get world peace or inner peace'
+2025-08-05 12:22:43,784 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-08-05 12:22:43,784 - openai_therapist - INFO - Sarcasm level set to 5
+2025-08-05 12:22:43,784 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-08-05 12:22:43,784 - openai_therapist - INFO - Generating response for: 'Help me get world peace or inner peace'
+2025-08-05 12:22:48,167 - openai_therapist - INFO - Generated response: 'Ah, starting off with the small goals, I see? World peace might just be a tad out of our reach in this session, unless you’ve secretly mastered international diplomacy between text messages. But inner peace, now that’s something we can chip away at without needing the United Nations on speed dial.
+
+Inner peace usually involves addressing those pesky inner conflicts and emotional turmoil. It’s like doing housekeeping but in your mind. Super fun, I promise. Start by identifying what stresses you out or causes you emotional upheaval. Is it work, relationships, or perhaps that nagging feeling that you forgot to turn off the oven? Once you pinpoint these, you can start working through them, perhaps by using mindfulness or talking it out with someone less sarcastic than me. Who knows, with enough inner peace, you might just inadvertently contribute to world peace. Wouldn’t that be a kicker?'
+2025-08-05 12:22:48,171 - app - INFO - Generated response: 'Ah, starting off with the small goals, I see? World peace might just be a tad out of our reach in this session, unless you’ve secretly mastered international diplomacy between text messages. But inner peace, now that’s something we can chip away at without needing the United Nations on speed dial.
+
+Inner peace usually involves addressing those pesky inner conflicts and emotional turmoil. It’s like doing housekeeping but in your mind. Super fun, I promise. Start by identifying what stresses you out or causes you emotional upheaval. Is it work, relationships, or perhaps that nagging feeling that you forgot to turn off the oven? Once you pinpoint these, you can start working through them, perhaps by using mindfulness or talking it out with someone less sarcastic than me. Who knows, with enough inner peace, you might just inadvertently contribute to world peace. Wouldn’t that be a kicker?'
+2025-08-05 12:22:48,172 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-08-05 12:22:48,172 - app - INFO - Using ElevenLabs TTS
+2025-08-05 12:23:01,035 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:23:01] "POST /api/message HTTP/1.1" 200 -
+2025-08-05 12:23:01,585 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:23:01] "[35m[1mGET /static/audio/7a707948fdc94afea5510612b97eed59.wav HTTP/1.1[0m" 206 -
+2025-08-05 12:23:01,784 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:23:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-05 12:33:19,600 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:33:19,600 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:33:19,600 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:33:19,600 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:33:19,600 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:33:19,611 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-05 12:33:19,611 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-05 12:33:19,611 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 12:33:20,472 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:33:20,472 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:33:20,472 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:33:20,472 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:33:20,472 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:33:20,475 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 12:33:20,487 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 12:33:22,877 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:33:22] "GET / HTTP/1.1" 200 -
+2025-08-05 12:33:24,309 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:33:24] "GET /api/history HTTP/1.1" 200 -
+2025-08-05 12:34:05,492 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False, 'voice': 'Rishi', 'speech_rate': 1}
+2025-08-05 12:34:05,493 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:34:05] "POST /api/preferences HTTP/1.1" 200 -
+2025-08-05 12:34:08,635 - app - INFO - Received message: 'Hi'
+2025-08-05 12:34:08,637 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-08-05 12:34:08,637 - openai_therapist - INFO - Sarcasm level set to 5
+2025-08-05 12:34:08,638 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-08-05 12:34:08,638 - openai_therapist - INFO - Generating response for: 'Hi'
+2025-08-05 12:34:11,635 - openai_therapist - INFO - Generated response: 'Hello! Here to delve into the depths of your psyche, or just hoping for a bit of clever banter to brighten your day? Either way, I’m at your service. What’s on your mind?'
+2025-08-05 12:34:11,638 - app - INFO - Generated response: 'Hello! Here to delve into the depths of your psyche, or just hoping for a bit of clever banter to brighten your day? Either way, I’m at your service. What’s on your mind?'
+2025-08-05 12:34:11,638 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-08-05 12:34:11,638 - app - INFO - Using ElevenLabs TTS
+2025-08-05 12:34:13,987 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:34:13] "POST /api/message HTTP/1.1" 200 -
+2025-08-05 12:34:14,544 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:34:14] "[35m[1mGET /static/audio/18f8bb3e8b5a43c4a30fd4138191e2be.wav HTTP/1.1[0m" 206 -
+2025-08-05 12:34:14,717 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:34:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-05 12:35:11,769 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:35:11,769 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:35:11,769 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:35:11,769 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:35:11,769 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:35:11,784 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-05 12:35:11,784 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-05 12:35:11,785 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 12:35:12,676 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:35:12,676 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:35:12,676 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:35:12,676 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:35:12,676 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:35:12,679 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 12:35:12,697 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 12:35:15,069 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:15] "GET / HTTP/1.1" 200 -
+2025-08-05 12:35:16,223 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:16] "GET /api/history HTTP/1.1" 200 -
+2025-08-05 12:35:43,460 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True, 'voice': 'Rishi', 'speech_rate': 1}
+2025-08-05 12:35:43,462 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:43] "POST /api/preferences HTTP/1.1" 200 -
+2025-08-05 12:35:46,908 - app - INFO - Received message: 'Hi'
+2025-08-05 12:35:46,913 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-08-05 12:35:46,913 - openai_therapist - INFO - Sarcasm level set to 5
+2025-08-05 12:35:46,914 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-08-05 12:35:46,914 - openai_therapist - INFO - Generating response for: 'Hi'
+2025-08-05 12:35:48,861 - openai_therapist - INFO - Generated response: 'Hello! What deep, unresolved issues can we pretend to solve today?'
+2025-08-05 12:35:48,862 - app - INFO - Generated response: 'Hello! What deep, unresolved issues can we pretend to solve today?'
+2025-08-05 12:35:48,863 - app - INFO - Generating audio: use_dia=True, voice=Rishi (en-IN), speech_rate=1.0
+2025-08-05 12:35:48,863 - app - INFO - Using ElevenLabs TTS
+2025-08-05 12:35:50,023 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:50] "POST /api/message HTTP/1.1" 200 -
+2025-08-05 12:35:50,575 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:50] "[35m[1mGET /static/audio/933b2ec1347c482f8950a2b31b6f6747.wav HTTP/1.1[0m" 206 -
+2025-08-05 12:35:50,642 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:35:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-05 12:50:34,732 - werkzeug - INFO -  * Detected change in '/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/app.py', reloading
+2025-08-05 12:53:53,692 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:53:53,692 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:53:53,692 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:53:53,692 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:53:53,692 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:53:53,701 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-05 12:53:53,701 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-05 12:53:53,702 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 12:53:54,537 - app - INFO - SUPABASE_URL present: True
+2025-08-05 12:53:54,538 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 12:53:54,538 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 12:53:54,538 - app - INFO - DIA_API_KEY present: True
+2025-08-05 12:53:54,538 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 12:53:54,540 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 12:53:54,551 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 12:53:57,687 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:53:57] "GET / HTTP/1.1" 200 -
+2025-08-05 12:53:59,596 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:53:59] "GET /api/history HTTP/1.1" 200 -
+2025-08-05 12:54:01,017 - app - INFO - Received message: 'Hi'
+2025-08-05 12:54:01,018 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-08-05 12:54:01,018 - openai_therapist - INFO - Sarcasm level set to 5
+2025-08-05 12:54:01,018 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-08-05 12:54:01,019 - openai_therapist - INFO - Generating response for: 'Hi'
+2025-08-05 12:54:02,549 - openai_therapist - INFO - Generated response: 'Oh, hello! What a delightfully elaborate message. What brings you to the land of sarcasm and secret helpfulness today?'
+2025-08-05 12:54:02,556 - app - INFO - Generated response: 'Oh, hello! What a delightfully elaborate message. What brings you to the land of sarcasm and secret helpfulness today?'
+2025-08-05 12:54:02,557 - app - INFO - Using Dia for audio generation (permanent default)
+2025-08-05 12:54:02,557 - dia_tts - INFO - generate_and_save called with text: 'Oh, hello! What a delightfully elaborate message. What brings you to the land of sarcasm and secret helpfulness today?', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/450b81aea1a04b2e8f39231fd39c5eda.wav
+2025-08-05 12:54:02,557 - dia_tts - INFO - Using device: cpu
+2025-08-05 12:54:02,557 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-08-05 12:54:02,557 - dia_tts - INFO - Dia API key found in environment variables
+2025-08-05 12:54:02,557 - dia_tts - INFO - Generating audio for text: 'Oh, hello! What a delightfully elaborate message. What brings you to the land of sarcasm and secret helpfulness today?', speaker: 0
+2025-08-05 12:54:02,563 - dia_tts - ERROR - Error generating audio: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10af36210>: Failed to establish a new connection: [Errno 61] Connection refused'))
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1303, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1349, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1058, in _send_output
+    self.send(msg)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 996, in send
+    self.connect()
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10af36210>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10af36210>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 115, in generate
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10af36210>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-05 12:54:02,602 - dia_tts - INFO - Generated placeholder audio for: 'Oh, hello! What a delightfully elaborate message. What brings you to the land of sarcasm and secret helpfulness today?', duration: 11.33s
+2025-08-05 12:54:02,606 - dia_tts - INFO - Saving audio to /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/450b81aea1a04b2e8f39231fd39c5eda.wav
+2025-08-05 12:54:02,613 - dia_tts - INFO - Audio file generated: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/450b81aea1a04b2e8f39231fd39c5eda.wav, size: 543788 bytes
+2025-08-05 12:54:02,613 - app - INFO - Audio file created: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/450b81aea1a04b2e8f39231fd39c5eda.wav, size=543788
+2025-08-05 12:54:02,614 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:54:02] "POST /api/message HTTP/1.1" 200 -
+2025-08-05 12:54:03,157 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:54:03] "[35m[1mGET /static/audio/450b81aea1a04b2e8f39231fd39c5eda.wav HTTP/1.1[0m" 206 -
+2025-08-05 12:54:03,463 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:54:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-05 12:54:14,015 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': False, 'voice': 'Rishi', 'speech_rate': 1}
+2025-08-05 12:54:14,016 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:54:14] "POST /api/preferences HTTP/1.1" 200 -
+2025-08-05 12:54:19,720 - app - INFO - Updating preferences: {'tone_preferences': '{"sarcasm_level":7}', 'use_dia': True, 'voice': 'Rishi', 'speech_rate': 1}
+2025-08-05 12:54:19,722 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 12:54:19] "POST /api/preferences HTTP/1.1" 200 -
+2025-08-05 13:03:23,820 - werkzeug - INFO -  * Detected change in '/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/app.py', reloading
+2025-08-05 13:03:31,760 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 13:03:40,998 - app - INFO - SUPABASE_URL present: True
+2025-08-05 13:03:40,998 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 13:03:40,998 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 13:03:40,998 - app - INFO - DIA_API_KEY present: True
+2025-08-05 13:03:40,998 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 13:03:41,002 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 13:03:41,059 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 13:03:52,234 - werkzeug - INFO -  * Detected change in '/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py', reloading
+2025-08-05 13:03:53,260 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 13:04:14,254 - app - INFO - SUPABASE_URL present: True
+2025-08-05 13:04:14,254 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 13:04:14,254 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 13:04:14,254 - app - INFO - DIA_API_KEY present: True
+2025-08-05 13:04:14,254 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 13:04:14,264 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-05 13:04:14,264 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-05 13:04:14,265 - werkzeug - INFO -  * Restarting with stat
+2025-08-05 13:04:15,097 - app - INFO - SUPABASE_URL present: True
+2025-08-05 13:04:15,097 - app - INFO - SUPABASE_KEY present: True
+2025-08-05 13:04:15,097 - app - INFO - OPENAI_API_KEY present: True
+2025-08-05 13:04:15,097 - app - INFO - DIA_API_KEY present: True
+2025-08-05 13:04:15,097 - app - INFO - ELEVENLABS_API_KEY present: True
+2025-08-05 13:04:15,100 - werkzeug - WARNING -  * Debugger is active!
+2025-08-05 13:04:15,110 - werkzeug - INFO -  * Debugger PIN: 654-231-115
+2025-08-05 13:04:17,901 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 13:04:17] "GET / HTTP/1.1" 200 -
+2025-08-05 13:04:19,710 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 13:04:19] "GET /api/history HTTP/1.1" 200 -
+2025-08-05 13:04:25,168 - app - INFO - Received message: 'Hi'
+2025-08-05 13:04:25,169 - openai_therapist - INFO - OpenAI API key found, using model: gpt-4-turbo
+2025-08-05 13:04:25,169 - openai_therapist - INFO - Sarcasm level set to 5
+2025-08-05 13:04:25,169 - app - INFO - Set sarcasm level to 5 using set_sarcasm_level method
+2025-08-05 13:04:25,170 - openai_therapist - INFO - Generating response for: 'Hi'
+2025-08-05 13:04:27,002 - openai_therapist - INFO - Generated response: 'Hello! Ready to dive into the depths of your psyche, or are we just going to talk about the weather? Either way, I’m here for it.'
+2025-08-05 13:04:27,005 - app - INFO - Generated response: 'Hello! Ready to dive into the depths of your psyche, or are we just going to talk about the weather? Either way, I’m here for it.'
+2025-08-05 13:04:27,006 - app - INFO - Trying Dia for audio generation (primary choice)
+2025-08-05 13:04:27,007 - dia_tts - INFO - generate_and_save called with text: 'Hello! Ready to dive into the depths of your psyche, or are we just going to talk about the weather? Either way, I’m here for it.', output_path: /Users/omarzubair/PycharmProjects/Sarcastic-Therapist/static/audio/9fcf5d5e39424aa9bf53cdf08aa5be53.wav
+2025-08-05 13:04:27,008 - dia_tts - INFO - Using device: cpu
+2025-08-05 13:04:27,009 - dia_tts - INFO - Initializing DiaGenerator on device: cpu
+2025-08-05 13:04:27,009 - dia_tts - INFO - Dia API key found in environment variables
+2025-08-05 13:04:27,009 - dia_tts - INFO - Generating audio for text: 'Hello! Ready to dive into the depths of your psyche, or are we just going to talk about the weather? Either way, I’m here for it.', speaker: 0
+2025-08-05 13:04:27,014 - dia_tts - ERROR - Error generating audio: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x110331150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1303, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1349, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1298, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 1058, in _send_output
+    self.send(msg)
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/http/client.py", line 996, in send
+    self.connect()
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x110331150>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/urllib3/util/retry.py", line 594, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x110331150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/omarzubair/PycharmProjects/Sarcastic-Therapist/dia_tts.py", line 109, in generate
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/omarzubair/.pyenv/versions/3.11.9/lib/python3.11/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x110331150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-05 13:04:27,039 - app - WARNING - Dia failed: Dia TTS failed: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /predict (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x110331150>: Failed to establish a new connection: [Errno 61] Connection refused'))
+2025-08-05 13:04:27,039 - app - INFO - Falling back to Amazon Polly
+2025-08-05 13:04:28,100 - app - WARNING - Polly also failed: An error occurred (ValidationException) when calling the SynthesizeSpeech operation: 1 validation error detected: Value 'Rishi' at 'voiceId' failed to satisfy constraint: Member must satisfy enum value set: [Lotte, Maxim, Ayanda, Salli, Ola, Arthur, Ida, Tomoko, Remi, Geraint, Miguel, Elin, Lisa, Giorgio, Marlene, Ines, Kajal, Zhiyu, Zeina, Suvi, Karl, Gwyneth, Joanna, Lucia, Cristiano, Astrid, Andres, Vicki, Mia, Vitoria, Bianca, Chantal, Raveena, Daniel, Amy, Liam, Ruth, Kevin, Brian, Russell, Aria, Matthew, Aditi, Zayd, Dora, Enrique, Hans, Danielle, Hiujin, Carmen, Sofie, Gregory, Ivy, Ewa, Maja, Gabrielle, Nicole, Filiz, Camila, Jacek, Jasmine, Thiago, Justin, Celine, Kazuha, Kendra, Arlet, Ricardo, Mads, Hannah, Mathieu, Lea, Sergio, Hala, Tatyana, Penelope, Naja, Olivia, Ruben, Laura, Takumi, Mizuki, Carla, Conchita, Jan, Kimberly, Liv, Adriano, Lupe, Joey, Pedro, Seoyeon, Emma, Niamh, Stephen]
+2025-08-05 13:04:28,104 - app - INFO - Falling back to ElevenLabs
+2025-08-05 13:04:29,911 - app - INFO - ElevenLabs audio generated successfully: 116655 bytes
+2025-08-05 13:04:29,913 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 13:04:29] "POST /api/message HTTP/1.1" 200 -
+2025-08-05 13:04:30,452 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 13:04:30] "[35m[1mGET /static/audio/9fcf5d5e39424aa9bf53cdf08aa5be53.wav HTTP/1.1[0m" 206 -
+2025-08-05 13:04:30,671 - werkzeug - INFO - 127.0.0.1 - - [05/Aug/2025 13:04:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
