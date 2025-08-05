@@ -2,10 +2,8 @@ services:
   - type: web
     name: sarcastic-therapist
     env: python
-    pythonVersion: "3.11"  # Use this key for the build environment
+    pythonVersion: "3.11.9" # Provide the full major.minor.patch version
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn --bind 0.0.0.0:$PORT app:app"
-    # The envVars section is for your application's secrets, not build settings.
-    # You can add your OPENAI_API_KEY etc. here from the Render dashboard.
     envVars:
-      - fromGroup: sarcastic-therapist-secrets # Example of using a secret group
+      # ... your other envVars if any
